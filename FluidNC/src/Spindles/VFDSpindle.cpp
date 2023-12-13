@@ -81,6 +81,7 @@ namespace Spindles {
             response_parser parser = nullptr;
 
             // First check if we should ask the VFD for the speed parameters as part of the initialization.
+            if(pollidx == -1) uart.flushRx();
             if (pollidx < 0 && (parser = instance->initialization_sequence(pollidx, next_cmd)) != nullptr) {
             } else {
                 pollidx = 1;  // Done with initialization. Main sequence.
@@ -281,7 +282,6 @@ namespace Spindles {
         is_reversable = true;
 
         _current_state = SpindleState::Disable;
-
         // Initialization is complete, so now it's okay to run the queue task:
         if (!vfd_cmd_queue) {  // init can happen many times, we only want to start one task
             vfd_cmd_queue = xQueueCreate(VFD_RS485_QUEUE_SIZE, sizeof(VFDaction));
@@ -352,7 +352,7 @@ namespace Spindles {
                 //     last      = _sync_dev_speed;
                 //     break;
                 // }
-                delay_ms(500);
+                delay_msec(500, DwellMode::Dwell);
 
                 // unchanged counts the number of consecutive times that we see the same speed
                 unchanged = (_sync_dev_speed == last) ? unchanged + 1 : 0;

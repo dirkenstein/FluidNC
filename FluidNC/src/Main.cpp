@@ -93,11 +93,11 @@ void setup() {
                     config->_i2c[i]->init();
                 }
             }
-
+#ifdef ENABLE_OLED
             if (config->_oled) {
                 config->_oled->init();
             }
-
+#endif
             if (config->_stat_out) {
                 config->_stat_out->init();
             }

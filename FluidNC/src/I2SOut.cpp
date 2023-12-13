@@ -49,6 +49,7 @@ int i2s_out_init() {
 #    include <freertos/FreeRTOS.h>
 #    include <driver/periph_ctrl.h>
 #    include <rom/lldesc.h>
+#    include <driver/gpio.h>
 #    include <soc/i2s_struct.h>
 #    include <freertos/queue.h>
 #    include <soc/gpio_periph.h>

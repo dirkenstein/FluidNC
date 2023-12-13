@@ -19,7 +19,11 @@
 #include "../Stepping.h"
 #include "../Stepper.h"
 #include "../Config.h"
-#include "../OLED.h"
+
+#ifdef ENABLE_OLED
+   #include "../OLED.h"
+#endif
+
 #include "../Status_outputs.h"
 #include "Axes.h"
 #include "SPIBus.h"
@@ -74,7 +78,7 @@ namespace Machine {
         Macros*               _macros         = nullptr;
         Start*                _start          = nullptr;
         Parking*              _parking        = nullptr;
-        OLED*                 _oled           = nullptr;
+//        OLED*                 _oled           = nullptr;
         Status_Outputs*       _stat_out       = nullptr;
         Spindles::SpindleList _spindles;
 

@@ -64,8 +64,9 @@ namespace Machine {
         handler.section("parking", _parking);
 
         handler.section("user_outputs", _userOutputs);
-
+#ifdef ENABLE_OLED
         handler.section("oled", _oled);
+#endif
         handler.section("status_outputs", _stat_out);
 
         Spindles::SpindleFactory::factory(handler, _spindles);
