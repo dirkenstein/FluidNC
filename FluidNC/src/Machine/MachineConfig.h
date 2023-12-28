@@ -78,7 +78,9 @@ namespace Machine {
         Macros*               _macros         = nullptr;
         Start*                _start          = nullptr;
         Parking*              _parking        = nullptr;
-//        OLED*                 _oled           = nullptr;
+#ifdef ENABLE_OLED
+        OLED*                 _oled           = nullptr;
+#endif
         Status_Outputs*       _stat_out       = nullptr;
         Spindles::SpindleList _spindles;
 
