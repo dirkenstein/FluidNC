@@ -1,18 +1,30 @@
+// Copyright (c) 2023 Dirk Niggemann
+// Based on H2ASpindle.h
 // Copyright (c) 2020 -	Stefan de Bruijn
 // Use of this source code is governed by a GPLv3 license that can be found in the LICENSE file.
 
 /*
     SKI780Spindle.cpp
 
-    This is for the new SKI780 VFD based spindle via RS485 Modbus.
+    This is for a number of generic Chinese VFDs based on the SKI780 
+    Like the stepperonline.com EV200 series and various AliExpress spindles manufactured by CTTRL-DRIVE
+    labeled HSD3000 or CW100 or similar. 
+
+    All appear to use the same RS485 Modbus protocol and configuration parameters.  
 
                          WARNING!!!!
     VFDs are very dangerous. They have high voltages and are very powerful
     Remove power before changing bits.
 
-    The documentation is okay once you get how it works, but unfortunately
-    incomplete... See H2ASpindle.md for the remainder of the docs that I
-    managed to piece together.
+    The programing documentation is OK but some of the read frequency parameters don't behave quite how 
+    you'd expect (they show the set frequency, not the actual current drive frequency). 
+    
+    In contrast to the H2A spindle there is absolutely no mechanism for setting/getting actual RPM values, 
+    just drive frequency.
+
+    For details of the weird frequency setting by percentage approach, see H2ASpindle.md.
+
+    Note that almost all of the read parameters come from different registers/program settings than the H2A spindle. 
 */
 
 #include "SKI780Spindle.h"

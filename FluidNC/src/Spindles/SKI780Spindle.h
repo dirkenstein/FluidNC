@@ -1,3 +1,5 @@
+// Copyright (c) 2023 Dirk Niggemann
+// Based on H2ASpindle.h
 // Copyright (c) 2020 -	Stefan de Bruijn
 // Use of this source code is governed by a GPLv3 license that can be found in the LICENSE file.
 
